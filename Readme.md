@@ -6,7 +6,7 @@ This set of scripts simplifies the process of running the [Combo](http://senseab
 
 ## Selecting extracts and running
 
-The source file `data-src/commutes.csv` is a CSV file containing commuter flows between US Census Tracts derived from the ACS. This file has been scrubbed to remove ultra-long-distance commutes, commutes with origins or destinations outside of the Lower 48 states, and commutes for which the origin and destination lie in the same Census tract. Tracts are identified by their 10-digit FIPS code.
+The source file `data-src/commutes.csv` is a CSV file containing commuter flows between US Census Tracts derived from the ACS. **You will need to [download this file separately](https://www.dropbox.com/s/x5xz9v8ss6qyr0o/commutes.csv?dl=0) and place it in `data-src`, since it is too large for GitHub.** This file has been scrubbed to remove ultra-long-distance commutes, commutes with origins or destinations outside of the Lower 48 states, and commutes for which the origin and destination lie in the same Census tract. Tracts are identified by their 10-digit FIPS code.
 
 The file `data-src/subselection.txt` is a listing of Census tracts, one per line, by FIPS code. **Modify this file to include the FIPS codes of the Census tracts which you wish to analyze.** The example selection is all of the Census tracts in the states of New Hampshire and Vermont. The Census Bureau has gazeteer files for 2010 Census tracts [available here](https://www.census.gov/geo/maps-data/data/gazetteer2010.html). *Note: if the file `data-src/subselection.txt` is removed, the script will operate on all available tract-to-tract commute data.*
 
