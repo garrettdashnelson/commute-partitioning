@@ -2,7 +2,7 @@
 
 ## About
 
-This set of scripts simplifies the process of running the [Combo](http://senseable.mit.edu/community_detection/) community-detection algorithm (developed by [Sobolevsky et all](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.012811)) using commuter-flow data from the American Community Survey (ACS) in order to produce algorithmically-evaluated regionalizations of the United States. It is based on the process used by Nelson and Rae in the 2016 article ["A New Economic Geography of the United States: From Commutes to Megaregions"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166083). 
+This set of scripts simplifies the process of running the [Combo](http://senseable.mit.edu/community_detection/) community-detection algorithm (developed by [Sobolevsky et al.](http://journals.aps.org/pre/abstract/10.1103/PhysRevE.90.012811)) using commuter-flow data from the American Community Survey (ACS) in order to produce algorithmically-evaluated regionalizations of the United States. It is based on the process used by Nelson and Rae in the 2016 article ["A New Economic Geography of the United States: From Commutes to Megaregions"](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0166083). 
 
 ## Selecting extracts and running
 
@@ -14,7 +14,7 @@ The file `data-src/subselection.txt` is a listing of Census tracts, one per line
 
 `$ python combo-preprocessor.py`
 
-The result of this script is two files: `data-stage1/commutes.net`, a Pajek network file suitable for input into Combo, and `data-stage1/fips_table.csv`, a lookup table which will be used later to match FIPS codes to the serialized id numbers required by Combo. The examples included here are for the New Hampshire
+The result of this script is two files: `data-stage1/commutes.net`, a Pajek network file suitable for input into Combo, and `data-stage1/fips_table.csv`, a lookup table which will be used later to match FIPS codes to the serialized id numbers used by Combo.
 
 **Run Combo.**
 
