@@ -10,6 +10,7 @@ import time
 from os import remove, path
 
 
+weightFlows = True # set to False to use raw ACS flow data unweighted by margin of error
 debug = False # set to True for debug throttling
 
 startTime = time.time() 
@@ -88,8 +89,10 @@ for row in reader:
 	origId = getFipsSerialId(origin)
 	destId = getFipsSerialId(dest)
 
-	# For weighting flow by MOE
-	strength = float(row[2])/float(row[3])
+	if weightFlows:
+		strength = float(row[2])/float(row[3])
+	else:
+		strength = float(row[2])
 
 	arcTmp.write(' %s %s %f\n' % (origId,destId,strength ))
 
