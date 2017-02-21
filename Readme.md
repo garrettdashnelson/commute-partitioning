@@ -8,7 +8,13 @@ This set of scripts simplifies the process of running the [Combo](http://senseab
 
 The source file `data-src/commutes.csv` is a CSV file containing commuter flows between US Census Tracts derived from the ACS. **You will need to [download this file separately](https://www.dropbox.com/s/x5xz9v8ss6qyr0o/commutes.csv?dl=0) and place it in `data-src`, since it is too large for GitHub.** This file has been scrubbed to remove ultra-long-distance commutes, commutes with origins or destinations outside of the Lower 48 states, and commutes for which the origin and destination lie in the same Census tract. Tracts are identified by their 10-digit FIPS code.
 
-The file `data-src/subselection.txt` is a listing of Census tracts, one per line, by FIPS code. **Modify this file to include the FIPS codes of the Census tracts which you wish to analyze.** The example selection is all of the Census tracts in the states of New Hampshire and Vermont. The Census Bureau has gazeteer files for 2010 Census tracts [available here](https://www.census.gov/geo/maps-data/data/gazetteer2010.html). *Note: if the file `data-src/subselection.txt` is removed, the script will operate on all available tract-to-tract commute data.*
+**1. Create a list of selected FIPS codes.**
+
+The file `data-src/subselection.txt` is a listing of Census tracts, one per line, by FIPS code. Modify this file to include the FIPS codes of the Census tracts which you wish to analyze. The example selection is all of the Census tracts in the states of New Hampshire and Vermont. The Census Bureau has gazeteer files for 2010 Census tracts [available here](https://www.census.gov/geo/maps-data/data/gazetteer2010.html).
+
+*Note 1: if the file `data-src/subselection.txt` is absent, the script will operate on all available tract-to-tract commute data.*
+
+*Note 2: if you produce this file by exporting from Excel for Mac to CSV, you will run into [a common error](http://stackoverflow.com/questions/22052168/excel-saves-tab-delimited-files-without-newline-unix-mac-os-x): Excel produces files with `\r` newlines instead of `\n`. You'll need to find-and-replace `\r` with `\n`.*
 
 **Run the preprocessor script.**
 
@@ -25,6 +31,8 @@ The build of Combo included here is compiled for OS X. If it does not run correc
 The variables [max-communities] may be left blank; if provided, Combo will limit to a given number of detected output communities.
 
 The result of running Combo is a file, `data-stage1/commutes_comm_comboC++.txt`, with community assignments whose line numbers match the serialized ids in the Pajek file. Combo also writes the "modularity score" of the partitioning process to stdout.
+
+*Note 1: This operation is computationally expensive; for computations of over 5,000 tracts, you may need a high-performance computer.*
 
 **Reassemble the tracts lookup table**
 
