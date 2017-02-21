@@ -16,13 +16,13 @@ The file `data-src/subselection.txt` is a listing of Census tracts, one per line
 
 *Note 2: if you produce this file by exporting from Excel for Mac to CSV, you will run into [a common error](http://stackoverflow.com/questions/22052168/excel-saves-tab-delimited-files-without-newline-unix-mac-os-x): Excel produces files with `\r` newlines instead of `\n`. You'll need to find-and-replace `\r` with `\n`.*
 
-**Run the preprocessor script.**
+**2. Run the preprocessor script.**
 
 `$ python combo-preprocessor.py`
 
 The result of this script is two files: `data-stage1/commutes.net`, a Pajek network file suitable for input into Combo, and `data-stage1/fips_table.csv`, a lookup table which will be used later to match FIPS codes to the serialized id numbers used by Combo.
 
-**Run Combo.**
+**3. Run Combo.**
 
 `$ ./comboCPP ./data-stage1/commutes.net [max-communities]`
 
@@ -34,7 +34,7 @@ The result of running Combo is a file, `data-stage1/commutes_comm_comboC++.txt`,
 
 *Note 1: This operation is computationally expensive; for computations of over 5,000 tracts, you may need a high-performance computer.*
 
-**Reassemble the tracts lookup table**
+**4. Reassemble the tracts lookup table.**
 
 `$ python combo-postprocessor.py`
 
